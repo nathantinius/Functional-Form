@@ -18,14 +18,16 @@
 
     <form action="index.html" method="post" novalidate>
 
-      <fieldset>
+      <fieldset class="basic-info">
         <legend>Basic Info</legend>
 
         <label for="name">Name:</label>
         <input type="text" id="name" name="user-name">
+        <p class='error'></p>
 
         <label for="mail">Email:</label>
         <input type="email" id="mail" name="user-email">
+        <p class='error'></p>
 
         <label for="title">Job Role</label>
         <select id="title" name="user-title">
@@ -36,6 +38,7 @@
           <option value="student">Student</option>
           <option value="other">Other</option>
         </select>
+        <input id="other-job-title" placeholder="What is your Job Role?" type="text" />
       </fieldset>
 
       <fieldset class="shirt">
