@@ -127,6 +127,11 @@ option {
 	font-family: 'roboto', sans-serif;
 }
 
+.error {
+	margin-top: -10px;
+    font-size: 0.7rem;
+}
+
 /* ================================= 
   Page Styles
 ==================================== */
