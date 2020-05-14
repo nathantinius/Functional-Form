@@ -34,7 +34,7 @@ const checkboxes = document.querySelectorAll(`input[type="checkbox"]`);
 const getPayment = document.getElementById('payment');
 const getCC = document.getElementById('credit-card');
 const getCCNum = document.getElementById('cc-num');
-const ccRegexCheck = /^[0-9]{4}\s?[0-9]{4}\s?[0-9]{4}\s?[0-9]{4}$/;
+const ccRegexCheck = /^\D*\d{4}\D*\d{4}\D*\d{4}\D*\d{4}\D*$/;
 const getZip = document.getElementById('zip');
 const zipRegexCheck = /^[0-9]{5}$/;
 const getCVV = document.getElementById('cvv');
@@ -262,7 +262,15 @@ function cvvCheck() {
     return cvvRegexCheck.test(getCVV.value);
 }
 
+function formatCC(text) {
+    const formatCCRegex = /^\D*(\d{4})\D*(\d{4})\D*(\d{4})\D*(\d{4})\D*$/
+    return text.replace(formatCCRegex, '$1 $2 $3 $4')
+}
+
 getCCNum.addEventListener('input', createListener(ccNumberCheck));
+getCCNum.addEventListener('blur', (event) => {
+    event.target.value = formatCC(event.target.value)
+});
 getZip.addEventListener('input', createListener(zipCheck));
 getCVV.addEventListener('input', createListener(cvvCheck));
 
