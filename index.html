@@ -23,11 +23,11 @@
 
         <label for="name">Name:</label>
         <input type="text" id="name" name="user-name">
-        <p class='error'></p>
+        <span>First and Last Name.</span>
 
         <label for="mail">Email:</label>
         <input type="email" id="mail" name="user-email">
-        <p class='error'></p>
+        <span>Valid Email Format: example@email.com</span>
 
         <label for="title">Job Role</label>
         <select id="title" name="user-title">
@@ -39,6 +39,7 @@
           <option value="other">Other</option>
         </select>
         <input id="other-job-title" placeholder="What is your Job Role?" type="text" />
+        <span>Please use a-z characters.</span>
       </fieldset>
 
       <fieldset class="shirt">
@@ -125,16 +126,19 @@
           <div class="col-6 col">
             <label for="cc-num">Card Number:</label>
             <input id="cc-num" name="user-cc-num" type="text">
+            <span>CC: XXXX XXXX XXXX XXXX</span>
           </div>
 
           <div class="col-3 col">
             <label for="zip">Zip Code:</label>
             <input id="zip" name="user-zip" type="text">
+            <span>Zip: XXXXX</span>
           </div>
 
           <div class="col-3 col">
             <label for="cvv">CVV:</label>
             <input id="cvv" name="user-cvv" type="text">
+            <span>CVV: XXX</span>
           </div>
 
           <label for="exp-month">Expiration Date:</label>

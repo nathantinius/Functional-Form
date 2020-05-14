@@ -120,6 +120,11 @@ button {
 button:hover {
 	background: #6F9DDC;
 }
+button:disabled{
+	background: #cccccc;
+	color: #f6f6f6;
+	cursor: default;
+}
 
 input, 
 select, 
@@ -127,10 +132,19 @@ option {
 	font-family: 'roboto', sans-serif;
 }
 
-.error {
-	margin-top: -10px;
-    font-size: 0.7rem;
-}
+span {
+	border-radius: 5px;
+    display: none;
+    font-size: 0.7em;
+    text-align: center;
+    background: rgb(12, 72, 90);
+    padding: 7px 10px;
+    color: #fff;
+    margin-top: -105px;
+    position: relative;
+    float: right;
+    margin-right: 10px;
+  }
 
 /* ================================= 
   Page Styles
