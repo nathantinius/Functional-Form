@@ -146,6 +146,7 @@ span {
     margin-right: 10px;
   }
 
+
 /* ================================= 
   Page Styles
 ==================================== */
@@ -184,6 +185,20 @@ span {
 	background: rgba(255, 255, 255, 0.1);
 	border-radius: 4px;
 }
+
+#activities-note {
+	border-radius: 5px;
+    font-size: 0.7em;
+    text-align: center;
+    background: rgb(12, 72, 90);
+    padding: 7px 10px;
+    color: #fff;
+    margin-top: -50px;
+    position: relative;
+    float: right;
+    margin-right: 10px;
+}
+
 
 /* ================================= 
   Helper Classes

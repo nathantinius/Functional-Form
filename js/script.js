@@ -10,7 +10,8 @@ const getSubmit = document.querySelector('button');
 
 //Name Field and Regex
 const getName = document.getElementById('name');
-const nameRegexCheck = /^[a-z]+\s[a-z]+$/i;
+//const nameRegexCheck = /^[a-z]+\s[a-z]+$/i; More advanced regex requiring first and last name
+const nameRegexCheck = /^[a-z\s]+$/i;
 
 //Email Field and Regex
 const getEmail = document.getElementById('mail');
@@ -34,7 +35,7 @@ const checkboxes = document.querySelectorAll(`input[type="checkbox"]`);
 const getPayment = document.getElementById('payment');
 const getCC = document.getElementById('credit-card');
 const getCCNum = document.getElementById('cc-num');
-const ccRegexCheck = /^\D*\d{4}\D*\d{4}\D*\d{4}\D*\d{4}\D*$/;
+const ccRegexCheck = /^\D*\d{4}\D*\d{4}\D*\d{4}\D*\d{1,4}\D*$/;
 const getZip = document.getElementById('zip');
 const zipRegexCheck = /^[0-9]{5}$/;
 const getCVV = document.getElementById('cvv');
@@ -69,7 +70,7 @@ function createListener(validator) {
     return e => {
         const text = e.target.value;
         const valid = validator(text);
-        const showTip = text !== "" && !valid;
+        const showTip = !valid;
         const tooltip = e.target.nextElementSibling;
         showOrHideTip(showTip, tooltip);
         formCheck();
@@ -90,11 +91,23 @@ function showOrHideTip(show, element) {
  ***/
 
 function nameCheck(name) {
-    return nameRegexCheck.test(name)
+    if (name == '') {
+        getName.nextElementSibling.innerHTML = "Name cannot be empty"
+        return nameRegexCheck.test(name)
+    } else {
+        getName.nextElementSibling.innerHTML = "Only letter characters allowed"
+        return nameRegexCheck.test(name)
+    }
 }
 
 function emailCheck(email) {
-    return emailRegexCheck.test(email)
+    if (email == '') {
+        getEmail.nextElementSibling.innerHTML = "Email cannot be empty"
+        return emailRegexCheck.test(email)
+    } else {
+        getEmail.nextElementSibling.innerHTML = "Email format: test@email.com"
+        return emailRegexCheck.test(email)
+    }
 }
 
 function jobCheck() {
@@ -102,7 +115,9 @@ function jobCheck() {
 }
 
 getName.addEventListener('input', createListener(nameCheck));
+getName.addEventListener('blur', createListener(nameCheck));
 getEmail.addEventListener('input', createListener(emailCheck));
+getEmail.addEventListener('blur', createListener(emailCheck));
 otherInput.addEventListener('input', createListener(jobCheck));
 
 /***
@@ -167,6 +182,7 @@ document.getElementById('design').addEventListener('change', () => {
  ***/
 
 const total = document.createElement('h3');
+const getActivitiesNote = document.getElementById('activities-note');
 totalCost = 0;
 total.innerHTML = `Total: $${totalCost}`;
 getActivities.appendChild(total);
@@ -199,14 +215,17 @@ checkboxes.forEach((checkbox) => {
         const itemCost = parseInt(event.target.getAttribute('data-cost'));
         const chosenWorkshopTime = event.target.getAttribute('data-day-and-time');
         checkCheckboxes(checked, itemCost, chosenWorkshopTime);
+        activitiesCheck();
         formCheck();
     })
 })
 
 function activitiesCheck() {
     if (totalCost > 0) {
+        getActivitiesNote.style.display = 'none';
         return true;
     } else {
+        getActivitiesNote.style.display = '';
         return false;
     }
 }
@@ -263,7 +282,7 @@ function cvvCheck() {
 }
 
 function formatCC(text) {
-    const formatCCRegex = /^\D*(\d{4})\D*(\d{4})\D*(\d{4})\D*(\d{4})\D*$/
+    const formatCCRegex = /^\D*(\d{4})\D*(\d{4})\D*(\d{4})\D*(\d{1,4})\D*$/
     return text.replace(formatCCRegex, '$1 $2 $3 $4')
 }
 
