@@ -33,6 +33,8 @@ const checkboxes = document.querySelectorAll(`input[type="checkbox"]`);
 
 //Payment fields and Regex
 const getPayment = document.getElementById('payment');
+getPayment.selectedIndex = 1;
+
 const getCC = document.getElementById('credit-card');
 const getCCNum = document.getElementById('cc-num');
 const ccRegexCheck = /^\D*\d{4}\D*\d{4}\D*\d{4}\D*\d{1,4}\D*$/;
@@ -49,7 +51,6 @@ let optionText = "";
 //Hide all hidden options as default
 otherInput.style.display = 'none'
 getShirtColors.style.display = 'none';
-getCC.style.display = 'none';
 getPP.style.display = 'none';
 getB.style.display = 'none';
 getSubmit.disabled = true;
